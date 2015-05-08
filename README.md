@@ -6,14 +6,59 @@
 [![NPM](https://nodei.co/npm/ot-hapi-request-metrics.png?downloads=true&stars=true)](https://nodei.co/npm/ot-hapi-request-metrics)
 
 ## Usage
+### 1) Install NPM Package
 ```
 $ npm i ot-hapi-request-metrics --save
 ```
+### 2) Register Plugin
 
-**TODO**
+```
+var server = new (require('hapi').Server)();
+server.connection({ port: 3000 });
+
+server.register([
+    {
+        register: require('ot-hapi-request-metrics'),
+        options: {
+            application: 'partner',
+            environment: 'prod',
+            dataCentre: 'sc'
+        }
+    }
+], function(err) {
+    if (err) {
+        console.error('Failed to load plugin:', err);
+    }
+
+    server.start();
+});
+```
+### 3) Label Routes
+```
+server.route(
+    {
+        method: 'GET',
+        path: '/path/to/resource',
+        handler: function(req, reply) {
+            reply().code(200);
+        },
+        config: {
+            plugins: {
+                'ot-hapi-request-metrics': {
+                    endpoint: 'get-resource',
+                    version: '1'
+                }
+            }
+        }
+    }
+);
+
+```
 
 ## Configuration
-**TODO**
+- **application** - application name (ideally, this should match discovery service type)
+- **environment** - environment (prod, qa or dev)
+- **dataCentre** - ln, sc, pp-sf, etc.
 
 ## Release History
 - **v0.0.1** (2015-05-08)
