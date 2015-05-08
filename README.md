@@ -11,7 +11,6 @@
 $ npm i ot-hapi-request-metrics --save
 ```
 ### 2) Register Plugin
-
 ```
 var server = new (require('hapi').Server)();
 server.connection({ port: 3000 });
@@ -54,11 +53,20 @@ server.route(
 );
 
 ```
+### 4) Configure Dashboards
+This plugin increments a counter and sets timing on every request. The path of counter and timing are generated based on information collected from plugin configuration, route configuration and request context, e.g.:
+
+`statsd.counters.partner.prod.sc.sc-partner-01.http-request-in.legacy_api_bridge.get_details-v1.success.get.200`
 
 ## Configuration
+### Global Configuration
 - **application** - application name (ideally, this should match discovery service type)
 - **environment** - environment (prod, qa or dev)
 - **dataCentre** - ln, sc, pp-sf, etc.
+
+### Route Configuration
+- **endpoint** - name of the endpoint
+- **version** - version of the endpoint
 
 ## Release History
 - **v0.0.1** (2015-05-08)
