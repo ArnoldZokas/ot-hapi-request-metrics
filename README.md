@@ -32,7 +32,7 @@ server.register([
     server.start();
 });
 ```
-### 3) Label Routes
+### 3) Configure Routes
 ```
 server.route(
     {
