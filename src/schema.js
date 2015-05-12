@@ -10,7 +10,7 @@ module.exports = {
         dataCentre: joi.string().required()
     },
     route: {
-        endpoint: joi.string().required(),
-        version: joi.string().required()
+        endpoint: joi.string(),
+        version: joi.string()
     }
 };

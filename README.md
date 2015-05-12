@@ -67,8 +67,8 @@ This plugin increments a counter and sets timing on every request. The path of c
 - **dataCentre** - ln, sc, pp-sf, etc.
 
 ### Route Configuration
-- **endpoint** - name of the endpoint
-- **version** - version of the endpoint
+- **endpoint** - (default 'unknown') name of the endpoint
+- **version** - (default '') version of the endpoint
 
 ## Release History
 - **v1.0.3** (2015-05-12)

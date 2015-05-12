@@ -5,7 +5,7 @@ var expect = require('expect.js'),
 
 describe('route option validation', function() {
     describe('given null endpoint', function() {
-        it('should return error', function() {
+        it('should return error', function(done) {
             plugin.register({
                 ext: function(_, handler) {
                     handler({
@@ -25,14 +25,18 @@ describe('route option validation', function() {
                                 expect(err.toString()).to.equal('ValidationError: child "endpoint" fails because ["endpoint" must be a string]');
                             }
                         }
-                    }, null);
+                    }, {
+                        continue: function() {
+                            done();
+                        }
+                    });
                 }
             }, { host: 'test', application: 'test', environment: 'test', dataCentre: 'test' }, function() {});
         });
     });
 
     describe('given empty endpoint', function() {
-        it('should return error', function() {
+        it('should return error', function(done) {
             plugin.register({
                 ext: function(_, handler) {
                     handler({
@@ -52,14 +56,18 @@ describe('route option validation', function() {
                                 expect(err.toString()).to.equal('ValidationError: child "endpoint" fails because ["endpoint" is not allowed to be empty]');
                             }
                         }
-                    }, null);
+                    }, {
+                        continue: function() {
+                            done();
+                        }
+                    });
                 }
             }, { host: 'test', application: 'test', environment: 'test', dataCentre: 'test' }, function() {});
         });
     });
 
     describe('given null version', function() {
-        it('should return error', function() {
+        it('should return error', function(done) {
             plugin.register({
                 ext: function(_, handler) {
                     handler({
@@ -79,14 +87,18 @@ describe('route option validation', function() {
                                 expect(err.toString()).to.equal('ValidationError: child "version" fails because ["version" must be a string]');
                             }
                         }
-                    }, null);
+                    }, {
+                        continue: function() {
+                            done();
+                        }
+                    });
                 }
             }, { host: 'test', application: 'test', environment: 'test', dataCentre: 'test' }, function() {});
         });
     });
 
     describe('given empty version', function() {
-        it('should return error', function() {
+        it('should return error', function(done) {
             plugin.register({
                 ext: function(_, handler) {
                     handler({
@@ -106,7 +118,11 @@ describe('route option validation', function() {
                                 expect(err.toString()).to.equal('ValidationError: child "version" fails because ["version" is not allowed to be empty]');
                             }
                         }
-                    }, null);
+                    }, {
+                        continue: function() {
+                            done();
+                        }
+                    });
                 }
             }, { host: 'test', application: 'test', environment: 'test', dataCentre: 'test' }, function() {});
         });
