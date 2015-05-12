@@ -19,6 +19,7 @@ server.register([
     {
         register: require('ot-hapi-request-metrics'),
         options: {
+            host: 'statsd-hostname',
             application: 'partner',
             environment: 'prod',
             dataCentre: 'sc'
@@ -60,6 +61,7 @@ This plugin increments a counter and sets timing on every request. The path of c
 
 ## Configuration
 ### Global Configuration
+- **host** - host name of the statsd service
 - **application** - application name (ideally, this should match discovery service type)
 - **environment** - environment (prod, qa or dev)
 - **dataCentre** - ln, sc, pp-sf, etc.
@@ -69,5 +71,7 @@ This plugin increments a counter and sets timing on every request. The path of c
 - **version** - version of the endpoint
 
 ## Release History
+- **v1.0.1** (2015-05-12)
+    - updated docs
 - **v1.0.0** (2015-05-12)
     - initial release
