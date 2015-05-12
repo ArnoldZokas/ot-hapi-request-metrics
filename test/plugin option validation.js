@@ -4,6 +4,14 @@ var expect = require('expect.js'),
     plugin = require('../index.js');
 
 describe('plugin option validation', function() {
+    describe('given no host', function() {
+        it('should return error', function() {
+            plugin.register(null, { application: null, environment: 'test', dataCentre: 'test' }, function(err) {
+                expect(err.toString()).to.equal('ValidationError: child "host" fails because ["host" is required]');
+            });
+        });
+    });
+
     describe('given null host', function() {
         it('should return error', function() {
             plugin.register(null, { host: null, application: null, environment: 'test', dataCentre: 'test' }, function(err) {
@@ -16,6 +24,14 @@ describe('plugin option validation', function() {
         it('should return error', function() {
             plugin.register(null, { host: '', application: 'test', environment: 'test', dataCentre: 'test' }, function(err) {
                 expect(err.toString()).to.equal('ValidationError: child "host" fails because ["host" is not allowed to be empty]');
+            });
+        });
+    });
+
+    describe('given no application', function() {
+        it('should return error', function() {
+            plugin.register(null, { host: 'test', environment: 'test', dataCentre: 'test' }, function(err) {
+                expect(err.toString()).to.equal('ValidationError: child "application" fails because ["application" is required]');
             });
         });
     });
@@ -36,6 +52,14 @@ describe('plugin option validation', function() {
         });
     });
 
+    describe('given no environment', function() {
+        it('should return error', function() {
+            plugin.register(null, { host: 'test', application: 'test', dataCentre: 'test' }, function(err) {
+                expect(err.toString()).to.equal('ValidationError: child "environment" fails because ["environment" is required]');
+            });
+        });
+    });
+
     describe('given null environment', function() {
         it('should return error', function() {
             plugin.register(null, { host: 'test', application: 'test', environment: null, dataCentre: 'test' }, function(err) {
@@ -48,6 +72,14 @@ describe('plugin option validation', function() {
         it('should return error', function() {
             plugin.register(null, { host: 'test', application: 'test', environment: '', dataCentre: 'test' }, function(err) {
                 expect(err.toString()).to.equal('ValidationError: child "environment" fails because ["environment" is not allowed to be empty]');
+            });
+        });
+    });
+
+    describe('given no dataCentre', function() {
+        it('should return error', function() {
+            plugin.register(null, { host: 'test', application: 'test', environment: 'test' }, function(err) {
+                expect(err.toString()).to.equal('ValidationError: child "dataCentre" fails because ["dataCentre" is required]');
             });
         });
     });
