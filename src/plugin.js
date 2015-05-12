@@ -20,19 +20,22 @@ exports.register = function(plugin, options, next) {
 
         var routeOptionValidationResult = joi.validate(routeConfig, require('./schema').route);
         if(routeOptionValidationResult.error) {
-            return req.server.log('error', routeOptionValidationResult.error);
+            req.server.log('error', routeOptionValidationResult.error);
+            return reply.continue();
         }
 
         var referrer = req.headers['ot-referringservice'] || 'unknown',
+            endpoint = routeConfig.endpoint || 'unknown',
+            version =  routeConfig.version ? '-v' + routeConfig.version : '',
             statusCode = req.response.statusCode || req.response.output.payload.statusCode,
             status = (statusCode >= 200 && statusCode <= 399) ? 'success' : 'failure';
 
-        var metricPath = options.application + '.' + options.environment + '.' + options.dataCentre + '.' + hostname + '.http-request-in.' + referrer + '.' + routeConfig.endpoint + '-v' + routeConfig.version + '.' + status + '.' + req.method + '.' + statusCode;
+        var metricPath = options.application + '.' + options.environment + '.' + options.dataCentre + '.' + hostname + '.http-request-in.' + referrer + '.' + endpoint + version + '.' + status + '.' + req.method + '.' + statusCode;
 
         statsd.increment(metricPath);
         statsd.timing(metricPath, new Date() - req.info.received);
 
-        reply.continue();
+        return reply.continue();
     });
 
     next();
