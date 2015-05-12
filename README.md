@@ -71,6 +71,8 @@ This plugin increments a counter and sets timing on every request. The path of c
 - **version** - (default '') version of the endpoint
 
 ## Release History
+- **v1.0.4** (2015-05-12)
+    - relaxed route config requirements and added safe defaults
 - **v1.0.3** (2015-05-12)
     - updated dependencies
 - **v1.0.2** (2015-05-12)
