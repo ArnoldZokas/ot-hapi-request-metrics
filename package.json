@@ -1,6 +1,6 @@
 {
   "name": "ot-hapi-request-metrics",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "StatsD request metrics plugin for Hapi",
   "engines": {
     "node": "0.12.0"
