@@ -17,7 +17,7 @@ describe('onPreResponse', function() {
                         },
                         timing: function(name, value) {
                             expect(name).to.equal('test-application.test-environment.test-dataCentre.' + os.hostname().replace(/\./g, '_') + '.http-request-in.test-service.test-endpoint-vtest-version.success.get.200');
-                            expect(value).to.be.greaterThan(0);
+                            expect(value).to.be.greaterThan(-1);
                         }
                     });
 
@@ -62,7 +62,7 @@ describe('onPreResponse', function() {
                         },
                         timing: function(name, value) {
                             expect(name).to.equal('test-application.test-environment.test-dataCentre.' + os.hostname().replace(/\./g, '_') + '.http-request-in.test-service.test-endpoint-vtest-version.failure.get.400');
-                            expect(value).to.be.greaterThan(0);
+                            expect(value).to.be.greaterThan(-1);
                         }
                     });
 
@@ -111,7 +111,7 @@ describe('onPreResponse', function() {
                         },
                         timing: function(name, value) {
                             expect(name).to.equal('test-application.test-environment.test-dataCentre.' + os.hostname().replace(/\./g, '_') + '.http-request-in.unknown.test-endpoint-vtest-version.success.get.200');
-                            expect(value).to.be.greaterThan(0);
+                            expect(value).to.be.greaterThan(-1);
                         }
                     });
 
@@ -154,7 +154,7 @@ describe('onPreResponse', function() {
                         },
                         timing: function(name, value) {
                             expect(name).to.equal('test-application.test-environment.test-dataCentre.' + os.hostname().replace(/\./g, '_') + '.http-request-in.test-service.unknown-vtest-version.success.get.200');
-                            expect(value).to.be.greaterThan(0);
+                            expect(value).to.be.greaterThan(-1);
                         }
                     });
 
@@ -198,7 +198,7 @@ describe('onPreResponse', function() {
                         },
                         timing: function(name, value) {
                             expect(name).to.equal('test-application.test-environment.test-dataCentre.' + os.hostname().replace(/\./g, '_') + '.http-request-in.test-service.test-endpoint.success.get.200');
-                            expect(value).to.be.greaterThan(0);
+                            expect(value).to.be.greaterThan(-1);
                         }
                     });
 
