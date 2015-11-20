@@ -24,11 +24,11 @@ exports.register = function(plugin, options, next) {
             return reply.continue();
         }
 
-        var referrer = req.headers['ot-referringservice'] || 'unknown',
-            endpoint = routeConfig.endpoint || 'unknown',
-            version =  routeConfig.version ? '-v' + routeConfig.version : '',
+        var referrer   = req.headers['ot-referringservice'] || 'unknown',
+            endpoint   = routeConfig.endpoint || 'unknown',
+            version    = routeConfig.version ? '-v' + routeConfig.version : '',
             statusCode = req.response.statusCode || req.response.output.payload.statusCode,
-            status = (statusCode >= 200 && statusCode <= 399) ? 'success' : 'failure';
+            status     = (statusCode >= 200 && statusCode <= 399) ? 'success' : 'failure';
 
         var metricPath = options.application + '.' + options.environment + '.' + options.dataCentre + '.' + hostname + '.http-request-in.' + referrer + '.' + endpoint + version + '.' + status + '.' + req.method + '.' + statusCode;
 
