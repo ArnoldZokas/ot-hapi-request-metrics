@@ -1,6 +1,6 @@
 {
   "name": "ot-hapi-request-metrics",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "StatsD request metrics plugin for Hapi",
   "engines": {
     "node": "0.12.0"
@@ -24,15 +24,15 @@
   },
   "homepage": "https://github.com/ArnoldZokas/ot-hapi-request-metrics",
   "dependencies": {
-    "joi": "7.0.0",
-    "statsd-client": "0.2.1"
+    "joi": "8.0.5",
+    "statsd-client": "0.2.2"
   },
   "devDependencies": {
     "expect.js": "0.3.1",
-    "grunt": "0.4.5",
-    "grunt-cli": "0.1.13",
-    "grunt-eslint": "17.3.1",
-    "rewire": "2.5.0",
-    "time-grunt": "1.2.2"
+    "grunt": "1.0.1",
+    "grunt-cli": "1.2.0",
+    "grunt-eslint": "18.0.0",
+    "rewire": "2.5.1",
+    "time-grunt": "1.3.0"
   }
 }
